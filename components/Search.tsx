@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { FaSearch } from "react-icons/fa";
 import { Input } from "@/components/ui/input"
 import { formUrlQuery } from '@/sanity/utils';
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 const Search = () => {
 
