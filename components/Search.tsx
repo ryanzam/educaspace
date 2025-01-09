@@ -9,7 +9,6 @@ const Search = () => {
 
     const [searchText, setSearchText] = useState("")
     const router = useRouter();
-    const pathname = usePathname();
     const searchParams = useSearchParams();
 
     useEffect(() => {
@@ -31,7 +30,7 @@ const Search = () => {
             router.push(newUrl, { scroll: false })
         }, 300)
         return () => clearTimeout(debounceDelay)
-    }, [searchText])
+    }, [searchText, router, searchParams])
 
     return (
         <form className='flex items-center justify-center w-full -mt-5'>

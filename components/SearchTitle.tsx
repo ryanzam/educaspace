@@ -10,7 +10,7 @@ const SearchTitle = ({ query, category }: SearchTitleProps) => {
     if (query && category) {
         return (
             <h1 className='text-purple-400'>
-                Search results for "{query}" in <span>{category}</span>
+                Search results for {query} in {category}
             </h1>
         )
     }
@@ -18,7 +18,7 @@ const SearchTitle = ({ query, category }: SearchTitleProps) => {
     if (query) {
         return (
             <h1 className='text-purple-400'>
-                Search results for "{query}"
+                Search results for {query}
             </h1>
         )
     }

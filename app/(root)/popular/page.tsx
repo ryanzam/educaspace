@@ -1,8 +1,6 @@
 import Search from "@/components/Search";
-import Filters from "@/components/Filters";
 import { getSources } from "@/sanity/actions";
 import Card from "@/components/Card";
-import SearchTitle from "@/components/SearchTitle";
 
 type CardType = {
     _id: string
