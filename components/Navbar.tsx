@@ -14,10 +14,10 @@ const Navbar = () => (
 
             <ul className='max-md:hidden flex justify-start items-start gap-x-3'>
                 <li className='text-purple-400'>
-                    <Link href="#">Latest Addition</Link>
+                    <Link href="/">Latest Addition</Link>
                 </li>
                 <li className=''>
-                    <Link href="#">Most Popular</Link>
+                    <Link href="/popular">Most Popular</Link>
                 </li>
             </ul>
         </div>

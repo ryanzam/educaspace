@@ -18,7 +18,7 @@ interface PageProps {
     }
 }
 
-export default async function HomePage({ searchParams }: PageProps) {
+export default async function PopularPage({ searchParams }: PageProps) {
 
     const { category, query } = await searchParams
 
@@ -30,17 +30,11 @@ export default async function HomePage({ searchParams }: PageProps) {
 
     return (
         <main className="flex justify-center items-center max-w-screen w-full flex-col mx-auto py-28">
+            <h1 className="text-2xl text-purple-400 pb-5">Most Popular</h1>
+
             <section className="w-full">
-                <div className="flex justify-center flex-col items-center min-h-[300px] bg-cover text-center bg-center rounded-2xl bg-[url('../public/banner-bg.jpg')]" >
-                    <h1 className="text-5xl uppercase">Educaspace</h1>
-                    <p className="text-2xl">Learn new things.</p>
-                </div>
                 <Search />
             </section>
-            <Filters />
-
-            {(query || category) && <SearchTitle query={query} category={category} />}
-
             <div className="flex flex-wrap justify-center sm:justify-start gap-2">
                 {sources.map((s: CardType) => (
                     <Card
