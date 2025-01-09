@@ -1,11 +1,13 @@
 "use client"
 import React, { useState } from 'react'
 import { Button } from './ui/button'
+import { formUrlQuery } from '@/sanity/utils'
+import { useSearchParams, useRouter } from 'next/navigation'
 
 const filterData = [
     "All",
     "Platforms",
-    "Front-End development",
+    "Front-end development",
     "Back-end development",
     "Others"
 ]
@@ -13,9 +15,30 @@ const filterData = [
 const Filters = () => {
 
     const [active, setActive] = useState("")
+    const searchParams = useSearchParams()
+    const router = useRouter()
 
     const handleClick = (f: string) => {
-        setActive(f)
+        let newUrl = '';
+
+        if (active === f) {
+            setActive('');
+
+            newUrl = formUrlQuery({
+                params: searchParams.toString(),
+                keysToRemove: ['category'],
+            })
+        } else {
+            setActive(f);
+
+            newUrl = formUrlQuery({
+                params: searchParams.toString(),
+                key: 'category',
+                value: f.toLowerCase(),
+            })
+        }
+
+        router.push(newUrl, { scroll: false });
     }
 
     return (

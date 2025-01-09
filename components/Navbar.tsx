@@ -4,7 +4,7 @@ import React from 'react'
 import { GiHamburgerMenu } from "react-icons/gi";
 
 const Navbar = () => (
-    <nav className='w-full top-0 z-50 border-black-200 bg-black-100 py-7'>
+    <nav className='w-full fixed top-0 z-50 border-black-200 bg-black py-7'>
         <div className='flex items-center justify-between mx-auto w-full flex-between max-w-screen-2xl px-6 xs:px-8 sm:px-16'>
             <Link href="/">
                 <Image src="/educa-logo.png" alt='educa logo' width={200} height={300}/>

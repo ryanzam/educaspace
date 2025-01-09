@@ -44,11 +44,11 @@ const schema = {
             validation: (Rule: any) => Rule.required(),
             options: {
                 list: [
-                    "All",
-                    "Platforms",
-                    "Front-End development",
-                    "Back-end development",
-                    "Others"
+                    "all",
+                    "platforms",
+                    "front-end development",
+                    "back-end development",
+                    "others"
                 ]
             }
         }
