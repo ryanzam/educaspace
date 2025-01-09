@@ -7,9 +7,17 @@ interface SearchTitleProps {
 
 const SearchTitle = ({ query, category }: SearchTitleProps) => {
 
+    if (query && category) {
+        return (
+            <h1 className='text-purple-400'>
+                Search results for "{query}" in <span>{category}</span>
+            </h1>
+        )
+    }
+
     if (query) {
         return (
-            <h1>
+            <h1 className='text-purple-400'>
                 Search results for "{query}"
             </h1>
         )
@@ -17,22 +25,16 @@ const SearchTitle = ({ query, category }: SearchTitleProps) => {
 
     if (category) {
         return (
-            <h1>
+            <h1 className='text-purple-400'>
                 <span>{category}</span>
             </h1>
         )
     }
 
-    if (query && category) {
-        return (
-            <h1>
-                Search results for "{query}" in <span>{category}</span>
-            </h1>
-        )
-    }
+
 
     return (
-        <h1>
+        <h1 className='text-purple-400'>
             Nothing found.
         </h1>
     )

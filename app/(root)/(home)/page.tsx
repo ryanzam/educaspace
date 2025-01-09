@@ -23,7 +23,7 @@ export default async function HomePage({ searchParams }: PageProps) {
     const { category, query } = await searchParams
 
     const sources = await getSources({
-        query: "",
+        query: query || "",
         category: category || "",
         page: "1"
     })

@@ -1,11 +1,37 @@
 "use client"
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { FaSearch } from "react-icons/fa";
 import { Input } from "@/components/ui/input"
+import { formUrlQuery } from '@/sanity/utils';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
 const Search = () => {
 
     const [searchText, setSearchText] = useState("")
+    const router = useRouter();
+    const pathname = usePathname();
+    const searchParams = useSearchParams();
+
+    useEffect(() => {
+        const debounceDelay = setTimeout(() => {
+            let newUrl = ""
+
+            if (searchText) {
+                newUrl = formUrlQuery({
+                    params: searchParams.toString(),
+                    key: 'query',
+                    value: searchText
+                })
+            } else {
+                newUrl = formUrlQuery({
+                    params: searchParams.toString(),
+                    keysToRemove: ['query']
+                })
+            }
+            router.push(newUrl, { scroll: false })
+        }, 300)
+        return () => clearTimeout(debounceDelay)
+    }, [searchText])
 
     return (
         <form className='flex items-center justify-center w-full -mt-5'>
