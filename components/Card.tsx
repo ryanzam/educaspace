@@ -8,7 +8,7 @@ import Link from "next/link"
 import { FaEye } from "react-icons/fa";
 import Image from "next/image"
 
-interface CardProps {
+export interface CardProps {
     id: string
     title: string
     image: string
@@ -19,7 +19,7 @@ interface CardProps {
 const CardComponent = ({ id, title, image, downloadUrl, views }: CardProps) => {
     return (
         <Card className="w-full max-w-fit border-0 bg-black text-white sm:max-w-[350px]">
-            <Link href={`/source/${id}`} target="_blank">
+            <Link href={`/${id}`} target="_blank">
                 <CardHeader>
                     <div className="h-fit w-full">
                         <Image src={image} className="h-full rounded-md object-contain" alt={title} height={400} width={380} />

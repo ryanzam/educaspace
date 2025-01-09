@@ -33,3 +33,23 @@ export const getSources = async (params: SourceParams) => {
         console.log(error)
     }
 }
+
+export const getSource = async (id: string) => {
+    try {
+        const source = await readclient.fetch(
+            groq`*[_type == "source" && _id == "${id}"][0]{
+                title,
+                _id,
+                downloadUrl, 
+                "image": image.asset->url,
+                views,
+                slug,
+                category
+              }`
+        )
+        console.log(source)
+        return source
+    } catch (error) {
+        console.log(error)
+    }
+}
