@@ -12,13 +12,11 @@ type CardType = {
     views: number
 }
 
-interface PageProps {
-    searchParams: {
-        [key: string]: string | undefined
-    }
+interface Props {
+    searchParams: { [key: string]: string | undefined }
 }
 
-export default async function HomePage({ searchParams }: PageProps) {
+export default async function HomePage({ searchParams }: Props) {
 
     const { category, query } = await searchParams
 
