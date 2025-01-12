@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { CardProps } from '@/components/Card';
-import { getSource } from '@/sanity/actions';
+import { getSource, increaseView } from '@/sanity/actions';
 import { use } from "react";
 import {
     Card,
@@ -37,7 +37,12 @@ const Single = ({ params }: { params: Promise<{ sourceId: string }> }) => {
             }
         };
 
+        const increaseViews = async () => {
+            await increaseView(sourceId, data?.views as number)
+        }
+
         fetchData();
+        increaseViews()
     }, [])
 
     if (data?.image && data?.title) {

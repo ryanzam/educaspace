@@ -1,5 +1,5 @@
 import { groq } from "next-sanity";
-import { readclient } from "./lib/client";
+import { readclient, writeclient } from "./lib/client";
 import { buildQuery } from "./utils";
 
 interface SourceParams {
@@ -48,6 +48,16 @@ export const getSource = async (id: string) => {
               }`
         )
         console.log(source)
+        return source
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const increaseView = async (_id: string, views: number) => {
+    try {
+        let viewCount = views + 1
+        const source = await writeclient.patch(_id).inc({views: viewCount})
         return source
     } catch (error) {
         console.log(error)

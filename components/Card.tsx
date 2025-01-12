@@ -7,6 +7,7 @@ import {
 import Link from "next/link"
 import { FaEye } from "react-icons/fa";
 import Image from "next/image"
+import { increaseView } from "@/sanity/actions";
 
 export interface CardProps {
     id: string
@@ -17,6 +18,7 @@ export interface CardProps {
 }
 
 const CardComponent = ({ id, title, image, downloadUrl, views }: CardProps) => {
+
     return (
         <Card className="w-full max-w-fit border-0 bg-black text-white sm:max-w-[350px]">
             <Link href={`/${id}`} target="_blank">
