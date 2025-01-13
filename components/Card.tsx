@@ -7,7 +7,6 @@ import {
 import Link from "next/link"
 import { FaEye } from "react-icons/fa";
 import Image from "next/image"
-import { increaseView } from "@/sanity/actions";
 
 export interface CardProps {
     id: string
