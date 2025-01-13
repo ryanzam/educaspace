@@ -15,10 +15,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { FaEye } from 'react-icons/fa';
 
-interface IParams {
-    sourceId: string;
-}
-
 const Single = ({ params }: { params: Promise<{ sourceId: string }> }) => {
 
     const [data, setData] = useState<CardProps>()
