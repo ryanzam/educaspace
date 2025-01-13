@@ -1,7 +1,10 @@
+"use client"
+
 import Search from "@/components/Search";
 import { getSources } from "@/sanity/actions";
 import Card from "@/components/Card";
 import { useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
 
 type CardType = {
     _id: string
@@ -11,17 +14,30 @@ type CardType = {
     views: number
 }
 
-export default async function PopularPage() {
+export default function PopularPage() {
+
+    const [data, setData] = useState([])
 
     const searchParams = useSearchParams()
     const query = searchParams.get("query")
     const category = searchParams.get("category")
 
-    const sources = await getSources({
-        query: query || "",
-        category: category || "",
-        page: "1"
-    })
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const result = await getSources({
+                    query: query || "",
+                    category: category || "",
+                    page: "1"
+                })
+                setData(result);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
+
+        fetchData();
+    }, [])
 
     return (
         <main className="flex justify-center items-center max-w-screen w-full flex-col mx-auto py-28">
@@ -31,7 +47,7 @@ export default async function PopularPage() {
                 <Search />
             </section>
             <div className="flex flex-wrap justify-center sm:justify-start gap-2">
-                {sources.map((s: CardType) => (
+                {data.map((s: CardType) => (
                     <Card
                         key={s._id}
                         title={s.title}
