@@ -1,6 +1,7 @@
 import Search from "@/components/Search";
 import { getSources } from "@/sanity/actions";
 import Card from "@/components/Card";
+import { useSearchParams } from "next/navigation";
 
 type CardType = {
     _id: string
@@ -10,15 +11,11 @@ type CardType = {
     views: number
 }
 
-interface PageProps {
-    searchParams: {
-        [key: string]: string | undefined
-    }
-}
+export default async function PopularPage() {
 
-export default async function PopularPage({ searchParams }: PageProps) {
-
-    const { category, query } = await searchParams
+    const searchParams = useSearchParams()
+    const query = searchParams.get("query")
+    const category = searchParams.get("category")
 
     const sources = await getSources({
         query: query || "",
